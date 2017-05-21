@@ -55,6 +55,11 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>${version.hibernate}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${version.aspectjweaver}</version>
+		</dependency>
 
 		<!-- velocity -->
 		<dependency>
@@ -66,12 +71,6 @@
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity-tools</artifactId>
 			<version>${version.velocity-tools}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjweaver</artifactId>
-			<version>${version.aspectjweaver}</version>
 		</dependency>
 
 		<!-- fastJson -->
@@ -162,18 +161,6 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${version.junit}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>${version.springframework}</version>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 
 	<build>
