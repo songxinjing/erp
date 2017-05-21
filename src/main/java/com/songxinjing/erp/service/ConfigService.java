@@ -1,0 +1,45 @@
+package com.songxinjing.erp.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.songxinjing.erp.dao.ConfigDao;
+import com.songxinjing.erp.domain.Config;
+import com.songxinjing.erp.service.base.BaseService;
+
+/**
+ * 配置信息服务类
+ * @author songxinjing
+ * 
+ */
+@Service
+public class ConfigService extends BaseService<Config, String>{
+
+	@Autowired
+	public void setSuperDao(ConfigDao configDao) {
+		super.setDao(configDao);
+	}
+	
+	/**
+	 * 获取生效配置信息
+	 * @return
+	 */
+	public List<Config> findEnable() {		
+		Config example = new Config();
+		example.setEnable(true);
+		return find(example);
+	}
+	
+	/**
+	 * 获取无效的配置信息
+	 * @return
+	 */
+	public List<Config> findNotEnable() {		
+		Config example = new Config();
+		example.setEnable(false);
+		return find(example);
+	}
+
+}
