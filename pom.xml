@@ -105,7 +105,7 @@
 			<version>${version.mysql-connector}</version>
 		</dependency>
 
-		<!-- ebay sdk core -->
+		<!-- ebay sdk core
 		<dependency>
 			<groupId>com.ebay</groupId>
 			<artifactId>ebaysdkcore</artifactId>
@@ -113,7 +113,6 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ebaysdkcore-981.jar</systemPath>
 		</dependency>
-		<!-- ebay sdk calls -->
 		<dependency>
 			<groupId>com.ebay</groupId>
 			<artifactId>ebaycalls</artifactId>
@@ -121,7 +120,6 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ebaycalls-981.jar</systemPath>
 		</dependency>
-		<!-- ebay sdk helper -->
 		<dependency>
 			<groupId>com.ebay</groupId>
 			<artifactId>helper</artifactId>
@@ -129,7 +127,7 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/helper-981.jar</systemPath>
 		</dependency>
-
+ 		-->
 		<dependency>
 			<groupId>xalan</groupId>
 			<artifactId>xalan</artifactId>

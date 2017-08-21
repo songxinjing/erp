@@ -2,6 +2,7 @@ package com.songxinjing.erp.domain;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +10,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  * 店铺信息表实体类
@@ -18,6 +23,7 @@ import javax.persistence.ManyToOne;
  *
  */
 @Entity
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "platform", "authUserId" }) })
 public class Store implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -43,9 +49,17 @@ public class Store implements Serializable {
 	private Integer platform;
 
 	/**
+	 * 授权用户ID
+	 */
+
+	@Column(length = 64)
+	private String authUserId;
+
+	/**
 	 * 店铺Token
 	 */
-	@Column(length = 1024)
+	@Column
+	@Lob
 	private String storeToken;
 
 	/**
@@ -60,6 +74,12 @@ public class Store implements Serializable {
 	@ManyToOne
 	@JoinColumn
 	private User storeHolder;
+
+	/**
+	 * 商品列表
+	 */
+	@OneToMany(mappedBy = "itemStore")
+	private List<Item> items;
 
 	public Integer getStoreId() {
 		return storeId;
@@ -85,6 +105,14 @@ public class Store implements Serializable {
 		this.platform = platform;
 	}
 
+	public String getAuthUserId() {
+		return authUserId;
+	}
+
+	public void setAuthUserId(String authUserId) {
+		this.authUserId = authUserId;
+	}
+
 	public String getStoreToken() {
 		return storeToken;
 	}
@@ -107,6 +135,14 @@ public class Store implements Serializable {
 
 	public void setStoreHolder(User storeHolder) {
 		this.storeHolder = storeHolder;
+	}
+
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Item> items) {
+		this.items = items;
 	}
 
 }

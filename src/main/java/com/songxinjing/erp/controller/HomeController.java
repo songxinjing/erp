@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,8 +23,6 @@ import com.songxinjing.erp.service.StoreService;
 @Controller
 public class HomeController extends BaseController {
 
-	private static Logger logger = LoggerFactory.getLogger(HomeController.class);
-
 	@Autowired
 	StoreService storeService;
 
@@ -37,6 +33,12 @@ public class HomeController extends BaseController {
 		List<Store> stores = storeService.findPage(hql, 0, 5);
 		model.addAttribute("stores", stores);
 		return "index";
+	}
+	
+	@RequestMapping(value = "login", method = RequestMethod.GET)
+	public String login(Model model, HttpServletRequest request) {
+		logger.info("进入登录页面");
+		return "login";
 	}
 
 	@RequestMapping(value = "system/error", method = RequestMethod.GET)

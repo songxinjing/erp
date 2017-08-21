@@ -83,7 +83,7 @@ public class PrivFilter implements Filter {
 			return;
 		}
 
-		// 获取用户登录信息，用户组别判断
+		// 获取用户登录信息
 		User user = (User) session.getAttribute(Constant.SESSION_LOGIN_USER);
 
 		// 用户访问权限判断

@@ -17,3 +17,21 @@
 	line-height:30px;
 	text-align: center;
 }
+
+img.platform-logo {
+	width: 65px;
+	height: 23px;
+}
+
+.margin-bottom {
+	margin-bottom: 15px;	
+}
+
+.panel-more {
+	color: white;
+}
+
+.btn-login {
+    width: 49%;
+}
+    

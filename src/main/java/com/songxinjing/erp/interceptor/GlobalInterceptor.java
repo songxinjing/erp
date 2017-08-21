@@ -1,6 +1,7 @@
 package com.songxinjing.erp.interceptor;
 
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,9 +11,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.songxinjing.erp.constant.Constant;
-import com.songxinjing.erp.domain.Config;
-import com.songxinjing.erp.domain.User;
 import com.songxinjing.erp.service.ConfigService;
 import com.songxinjing.erp.service.UserService;
 
@@ -39,18 +37,16 @@ public class GlobalInterceptor implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelView) throws Exception {
-		List<Config> configs = configService.findEnable();
-		for (Config c : configs) {
-			modelView.addObject(c.getName(), c.getValue());
-		}
-		
-		User loginUser = (User)request.getSession().getAttribute(Constant.SESSION_LOGIN_USER);
-		
-		if(loginUser == null){
-			loginUser = userService.find("0001");
-			request.getSession().setAttribute(Constant.SESSION_LOGIN_USER, loginUser);
-		}
-		
+		// List<Config> configs = configService.findEnable();
+		// for (Config c : configs) {
+		// modelView.addObject(c.getName(), c.getValue());
+		// }
+
+		// User loginUser =
+		// (User)request.getSession().getAttribute(Constant.SESSION_LOGIN_USER);
+
+		modelView.addObject("version", new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()));
+
 	}
 
 	@Override

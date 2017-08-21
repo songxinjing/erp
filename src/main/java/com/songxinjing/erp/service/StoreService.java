@@ -23,15 +23,26 @@ public class StoreService extends BaseService<Store, Integer> {
 		super.setDao(storeDao);
 	}
 
-	public Integer saveStore(int platform, String storeName, String storeToken, String tokenExp) {
+	public Integer saveStore(int platform, String storeName, String authUserId, String storeToken, String tokenExp) {
 
 		Store store = new Store();
 		store.setStoreName(storeName);
 		store.setPlatform(platform);
+		store.setAuthUserId(authUserId);
 		store.setStoreToken(storeToken);
 		store.setTokenExp(new Timestamp(System.currentTimeMillis()));
 		return (Integer) this.save(store);
 
+	}
+
+	public boolean isExist(int platform, String authUserId) {
+		Store store = new Store();
+		store.setPlatform(platform);
+		store.setAuthUserId(authUserId);
+		if (this.find(store).size() == 0) {
+			return false;
+		}
+		return true;
 	}
 
 }
